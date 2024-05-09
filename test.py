@@ -2,12 +2,15 @@ from src.network import Network
 from src.layers.fully_connected import FullyConnected
 from src.layers.interfaces.activation_strategy import SigmoidStrategy, ReluStrategy, SoftmaxStrategy
 from src.layers.activation import ActivationLayer
+from src.layers.input import InputLayer
 from src.layers.loss import Loss
 import numpy as np
 
 
 # Netzwerk initialisieren
 network = Network()
+
+network.add(InputLayer())
 
 # FullyConnected Layer hinzufügen
 network.add(FullyConnected(input_size=2, output_size=16))  # Beispiel: Eingabe von 784, Ausgabe von 100

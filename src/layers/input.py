@@ -3,7 +3,7 @@ from src.tensor import Tensor, Shape
 
 class InputLayer(Layer):
     def forward(self, input):
-        return Tensor(input, Shape(*input.shape))
+        return input
     
     def backward(self, output_gradient):
         return output_gradient

@@ -2,6 +2,7 @@ from src.network import Network
 from src.layers.fully_connected import FullyConnected
 from src.layers.interfaces.activation_strategy import SigmoidStrategy, ReluStrategy, SoftmaxStrategy
 from src.layers.activation import ActivationLayer
+from src.layers.input import InputLayer
 from src.layers.loss import Loss
 import numpy as np
 import tensorflow as tf
@@ -27,6 +28,7 @@ test_labels = to_categorical(test_labels, 10)
 
 # Netzwerkarchitektur anpassen
 network = Network()
+network.add(InputLayer())
 network.add(FullyConnected(input_size=784, output_size=16))
 network.add(ActivationLayer(ReluStrategy()))
 network.add(FullyConnected(input_size=16, output_size=24))
@@ -42,7 +44,7 @@ learning_rate = 0.05
 
 # Trainingsschleife anpassen
 losses = []
-for epoch in range(20):  # Nehmen wir an, wir trainieren für 50 Epochen
+for epoch in range(15):  # Nehmen wir an, wir trainieren für 50 Epochen
     epoch_loss = 0
     for x_train, y_train in zip(train_images, train_labels):
         x_train = x_train.reshape(1, 784)  # Anpassen der Form für das Netzwerk
